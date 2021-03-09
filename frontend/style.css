@@ -1,0 +1,5 @@
+body {
+    background: url(photo/cigar-box.jpg) center center no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
