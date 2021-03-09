@@ -5,5 +5,9 @@ class CigarsController < ApplicationController
         render json: cigars
     end
 
+    def show
+        cigar = Cigar.find(params[:id])
+        render json: cigar
+    end
 
 end
