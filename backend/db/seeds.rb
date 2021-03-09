@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+style_arr = ['Corona', 'Londres', 'Robusto', 'Torpedo', 'Pantela', 'Slim Pantela', 'Half Corona', 'Churchill', 'Toro', 'Cetros']
+
+style_arr.each do |s|
+    Style.create(name: s)
+end
+
+
