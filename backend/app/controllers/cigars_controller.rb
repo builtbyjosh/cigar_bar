@@ -5,5 +5,5 @@ class CigarsController < ApplicationController
         render json: cigars
     end
 
-    
+
 end
