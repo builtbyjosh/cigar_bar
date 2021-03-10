@@ -5,7 +5,6 @@ body {
     color: ivory;
 }
 
-.list {
-	background: gray;	
-
+.card-main {
+    width: 50%;
 }
