@@ -2,12 +2,13 @@ class CigarsController < ApplicationController
     
     def index
         cigars = Cigar.all
-        render json: cigars
+        render json: CigarSerializer.new(cigars)
     end
 
     def show
         cigar = Cigar.find(params[:id])
-        render json: cigar
+        
+        render json: CigarSerializer.new(cigar)
     end
 
 end
