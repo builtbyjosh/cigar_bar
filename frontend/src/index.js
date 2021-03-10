@@ -1,4 +1,4 @@
-const cigarList = document.querySelector(".cigar-list")
+const mainList = document.querySelector(".main-list")
 const allCigars = document.querySelector(".all-cigars")
 const allStyles = document.querySelector(".all-styles")
 const newCigar = document.querySelector(".new-cigar")
@@ -7,10 +7,8 @@ const cardItem = document.getElementsByClassName("nav-link")
 
 document.addEventListener('DOMContentLoaded', (e) => {
     getCigars()
-
-    fetch('http://localhost:3000/styles')
-    .then(res => res.json())
-    .then((data) => console.log(data))
+    getStyles()
+    
 })
 
 cardHeader.addEventListener('click', (e) => {
@@ -23,10 +21,21 @@ const getCigars = () => {
     .then((cigarData) => {
         cigarData.data.forEach(cigarObj => {
             const newCigar = new Cigar(cigarObj.attributes)            
-            cigarList.innerHTML += newCigar.renderEachCigar()
+            mainList.innerHTML += newCigar.renderSingleCigar()
         })
         // renderCigars(data)
     })
+}
+
+const getStyles = () =>{
+    fetch('http://localhost:3000/styles')
+    .then(res => res.json())
+    .then((styleData) => {
+        styleData.forEach(styleObj => {
+            const newStyle = new StyleMedia(styleObj)
+        })
+    })
+    debugger
 }
 
 
@@ -35,18 +44,18 @@ const getCigars = () => {
 //         const cigarLi = document.createElement('li')
 //         cigarLi.className = 'list-group-item'
 //         cigarLi.innerText += `${cigar.attributes.name} - $${cigar.attributes.price}`
-//         cigarList.appendChild(cigarLi)
-//         cigarList.innerHTML += `<li class="list-group-item">${cigar.attributes.name} - $${cigar.attributes.price}</li>`
+//         mainList.appendChild(cigarLi)
+//         mainList.innerHTML += `<li class="list-group-item">${cigar.attributes.name} - $${cigar.attributes.price}</li>`
 //     });
 // }
 const renderStyle = function(styles){
     styles.data.forEach((style) => {
-        cigarList.innerHTML += `<li class="list-group-item">${style.attributes.name}</li>`
+        mainList.innerHTML += `<li class="list-group-item">${style.attributes.name}</li>`
     });
 }
 
 const renderForm = function(){
-    cigarList.innerHTML = `
+    mainList.innerHTML = `
     <form >
         <div class="mb-3">            
             <input type="text" class="form-control" id="name" placeholder="Name">          
@@ -80,8 +89,6 @@ for (let i = 0; i < cardItem.length; i++) {
 
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault
-    cigarList.innerHTML = ""
-    cigarList.innerHTML += Cigar.renderEachCigar()
     console.log("cigars clicked")
 })
 

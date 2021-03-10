@@ -7,7 +7,7 @@ class Cigar {
         // this.style = data.style
     }
 
-    renderEachCigar(){
+    renderSingleCigar(){
         return `<li class="list-group-item">${this.name} - $${this.price}</li>`
     }
 
