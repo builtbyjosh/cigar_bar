@@ -55,9 +55,10 @@ const renderAllCigars = function(){
     })
 }
 
-const renderStyle = function(styles){
-    styles.data.forEach((style) => {
-        mainList.innerHTML += `<li class="list-group-item">${style.attributes.name}</li>`
+const renderStyle = function(){
+    mainList.innerHTML = ""
+    Style.all_styles.forEach(styleObj => {
+        mainList.innerHTML += styleObj.renderSingleStyle()
     });
 }
 
@@ -97,18 +98,16 @@ for (let i = 0; i < cardItem.length; i++) {
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault
     renderAllCigars()
-    console.log("cigars clicked")
 })
 
 allStyles.addEventListener("click",(e) =>{
     e.preventDefault
-    console.log("styles clicked")
+    renderStyle()    
 })
 
 newCigar.addEventListener("click",(e) =>{
     e.preventDefault
     renderForm()
-    console.log("new cigar form clicked")
 })
 
 
