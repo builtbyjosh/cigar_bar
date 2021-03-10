@@ -11,7 +11,6 @@ const renderCigars = function(cigars){
     console.log(cigars.data)
 
     cigars.data.forEach((cigar) => {
-
         main.innerHTML += `<h3>${cigar.attributes.name} - $${cigar.attributes.price}</h3>`
     });
 }
