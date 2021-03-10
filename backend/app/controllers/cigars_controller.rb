@@ -9,6 +9,7 @@ class CigarsController < ApplicationController
         cigar = Cigar.find(params[:id])
         
         render json: CigarSerializer.new(cigar)
+
     end
 
 end
