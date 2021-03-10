@@ -5,21 +5,26 @@ const newCigar = document.querySelector(".new-cigar")
 const cardHeader = document.querySelector(".card-header")
 const cardItem = cardHeader.getElementsByClassName("nav-link")
 
-fetch('http://localhost:3000/cigars')
+document.addEventListener('DOMContentLoaded', (e) => {
+    fetch('http://localhost:3000/cigars')
     .then(res => res.json())
     .then((data) => renderCigars(data))
 
+    fetch('http://localhost:3000/styles')
+    .then(res => res.json())
+    .then((data) => console.log(data))
+})
+
+
+
 
 const renderCigars = function(cigars){
-    
-    console.log(cigars)
-    console.log(cigars.data)
-
     cigars.data.forEach((cigar) => {
-        const cigarLi = document.createElement('li')
-        cigarLi.className = 'list-group-item'
-        cigarLi.innerText += `${cigar.attributes.name} - $${cigar.attributes.price}`
-        cigarList.appendChild(cigarLi)
+        // const cigarLi = document.createElement('li')
+        // cigarLi.className = 'list-group-item'
+        // cigarLi.innerText += `${cigar.attributes.name} - $${cigar.attributes.price}`
+        // cigarList.appendChild(cigarLi)
+        cigarList.innerHTML += `<li class="list-group-item">${cigar.attributes.name} - $${cigar.attributes.price}</li>`
     });
 }
 
