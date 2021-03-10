@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
     
 })
 
-cardHeader.addEventListener('click', (e) => {
-    console.log(e.target)
-})
+// cardHeader.addEventListener('click', (e) => {
+//     console.log(e.target)
+// })
 
 const getCigars = () => {
     fetch('http://localhost:3000/cigars')
@@ -32,10 +32,9 @@ const getStyles = () =>{
     .then(res => res.json())
     .then((styleData) => {
         styleData.forEach(styleObj => {
-            const newStyle = new StyleMedia(styleObj)
+            const newStyle = new Style(styleObj)
         })
     })
-    debugger
 }
 
 
@@ -48,6 +47,14 @@ const getStyles = () =>{
 //         mainList.innerHTML += `<li class="list-group-item">${cigar.attributes.name} - $${cigar.attributes.price}</li>`
 //     });
 // }
+
+const renderAllCigars = function(){
+    mainList.innerHTML = ""
+    Cigar.all_cigars.forEach(cigarObj => {        
+        mainList.innerHTML += cigarObj.renderSingleCigar()
+    })
+}
+
 const renderStyle = function(styles){
     styles.data.forEach((style) => {
         mainList.innerHTML += `<li class="list-group-item">${style.attributes.name}</li>`
@@ -89,6 +96,7 @@ for (let i = 0; i < cardItem.length; i++) {
 
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault
+    renderAllCigars()
     console.log("cigars clicked")
 })
 
