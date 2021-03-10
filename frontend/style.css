@@ -8,3 +8,7 @@ body {
 .card-main {
     width: 50%;
 }
+
+.card {
+    border: none;
+}

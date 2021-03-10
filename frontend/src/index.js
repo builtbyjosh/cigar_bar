@@ -28,6 +28,29 @@ const renderCigars = function(cigars){
     });
 }
 
+const renderForm = function(){
+    cigarList.innerHTML = `
+    <form >
+        <div class="mb-3">            
+            <input type="text" class="form-control" id="name" placeholder="Name">          
+        </div>
+        <div class="mb-3">            
+            <input type="text" class="form-control" id="description" placeholder="Description">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="price" placeholder="Price">            
+        </div>
+        <div class="mb-3">
+            <label for="style" class="form-label">Select Style</label>
+            <select id="style" class="form-select">
+                <option>Corona</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    `
+}
+
 for (let i = 0; i < cardItem.length; i++) {
     cardItem[i].addEventListener("click", function() {
       let current = document.getElementsByClassName("active")
@@ -50,6 +73,7 @@ allStyles.addEventListener("click",(e) =>{
 
 newCigar.addEventListener("click",(e) =>{
     e.preventDefault
+    renderForm()
     console.log("new cigar form clicked")
 })
 
