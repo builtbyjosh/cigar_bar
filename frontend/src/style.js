@@ -1,13 +1,8 @@
 class Style {
-    static all_styles = []
+    static all_items = []
 
     constructor(data){
         this.name = data.name
-        Style.all_styles.push(this)
+        Style.all_items.push(this)
     }
-
-    renderSingleStyle(){
-        return `<li class="list-group-item">${this.name}</li>`
-    }
-
 }

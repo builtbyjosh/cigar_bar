@@ -1,16 +1,11 @@
 class Cigar {
 
-    static all_cigars = []
+    static all_items = []
 
     constructor(data){
         this.name = data.name
         this.description = data.description
         this.price = data.price
-        Cigar.all_cigars.push(this)
+        Cigar.all_items.push(this)
     }
-
-    renderSingleCigar(){
-        return `<li class="list-group-item">${this.name} - $${this.price}</li>`
-    }
-
 }

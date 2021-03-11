@@ -8,22 +8,17 @@ const cardItem = document.getElementsByClassName("nav-link")
 document.addEventListener('DOMContentLoaded', (e) => {
     getCigars()
     getStyles()
-    
+    renderAllItems(Cigar)
 })
-
-// cardHeader.addEventListener('click', (e) => {
-//     console.log(e.target)
-// })
 
 const getCigars = () => {
     fetch('http://localhost:3000/cigars')
     .then(res => res.json())
     .then((cigarData) => {
         cigarData.data.forEach(cigarObj => {
-            const newCigar = new Cigar(cigarObj.attributes)            
-            mainList.innerHTML += newCigar.renderSingleCigar()
+            const newCigar = new Cigar(cigarObj.attributes)
+            renderAllItems(Cigar)
         })
-        // renderCigars(data)
     })
 }
 
@@ -35,31 +30,6 @@ const getStyles = () =>{
             const newStyle = new Style(styleObj)
         })
     })
-}
-
-
-// const renderCigars = function(cigars){
-//     cigars.data.forEach((cigar) => {
-//         const cigarLi = document.createElement('li')
-//         cigarLi.className = 'list-group-item'
-//         cigarLi.innerText += `${cigar.attributes.name} - $${cigar.attributes.price}`
-//         mainList.appendChild(cigarLi)
-//         mainList.innerHTML += `<li class="list-group-item">${cigar.attributes.name} - $${cigar.attributes.price}</li>`
-//     });
-// }
-
-const renderAllCigars = function(){
-    mainList.innerHTML = ""
-    Cigar.all_cigars.forEach(cigarObj => {        
-        mainList.innerHTML += cigarObj.renderSingleCigar()
-    })
-}
-
-const renderStyle = function(){
-    mainList.innerHTML = ""
-    Style.all_styles.forEach(styleObj => {
-        mainList.innerHTML += styleObj.renderSingleStyle()
-    });
 }
 
 const renderForm = function(){
@@ -77,7 +47,7 @@ const renderForm = function(){
         <div class="mb-3">
             <label for="style" class="form-label">Select Style</label>
             <select id="style" class="form-select">
-                <option>Corona</option>
+                
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -93,16 +63,26 @@ for (let i = 0; i < cardItem.length; i++) {
       }
       this.className += " active";
     });
-  }
+}
+
+function renderSingleItem(item){
+    return `<li class="list-group-item">${item.name}</li>`
+}  
+const renderAllItems = function(classObj){
+    mainList.innerHTML = ""
+    classObj.all_items.forEach(classItem => {
+        mainList.innerHTML += renderSingleItem(classItem)
+    });
+}
 
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault
-    renderAllCigars()
+    renderAllItems(Cigar)
 })
 
 allStyles.addEventListener("click",(e) =>{
     e.preventDefault
-    renderStyle()    
+    renderAllItems(Style)    
 })
 
 newCigar.addEventListener("click",(e) =>{
