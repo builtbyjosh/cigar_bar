@@ -37,13 +37,13 @@ const renderForm = function(){
     mainList.innerHTML = `
     <form id="new-cigar">
         <div class="mb-3">            
-            <input type="text" class="form-control" id="name" placeholder="Name">          
+            <input type="text" class="form-control" id="name" placeholder="Name" name="cigar[name]">          
         </div>
         <div class="mb-3">            
-            <input type="text" class="form-control" id="description" placeholder="Description">
+            <input type="text" class="form-control" id="description" placeholder="Description" name="cigar[description]">
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" id="price" placeholder="Price">            
+            <input type="text" class="form-control" id="price" placeholder="Price" name="cigar[price]">            
         </div>
         <div class="mb-3">
             <label for="style-dropdown" class="form-label">Select Style</label>
@@ -54,10 +54,8 @@ const renderForm = function(){
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     `
-    populateDropdown()
-    
+    populateDropdown()    
 }
-
 
 const populateDropdown = function(){
     const styleDropdown = document.querySelector("#style-dropdown")
@@ -66,21 +64,13 @@ const populateDropdown = function(){
     })    
 }
 
-// const formSubmit = function(){
-//     const submit = document.querySelector("#cigar-submit")
-//     submit.preventDefault
-//     submit.addEventListener("submit", () =>{
-//         console.log("clicked")
-//     })
-// }
-
 for (let i = 0; i < cardItem.length; i++) {
     cardItem[i].addEventListener("click", function() {
       let current = document.getElementsByClassName("active")
       if (current.length > 0) {
         current[0].className = current[0].className.replace(" active", "")
       }
-      this.className += " active";
+      this.className += " active"
     });
 }
 
@@ -94,24 +84,42 @@ const renderAllItems = function(classObj){
     });
 }
 
+const submitCigar = function(data){
+    fetch(`http://localhost:3000/cigars`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then((res) => res.json())
+    .then((cigar) => {        
+        const newCigar = new Cigar(cigar)
+        console.log(newCigar)
+        renderAllItems(Cigar)        
+    })
+}
+
 allCigars.addEventListener("click",(e) =>{
-    e.preventDefault
+    e.preventDefault()
     renderAllItems(Cigar)
 })
 
 allStyles.addEventListener("click",(e) =>{
-    e.preventDefault
+    e.preventDefault()
     renderAllItems(Style)    
 })
 
 newCigar.addEventListener("click",(e) =>{
-    e.preventDefault
+    e.preventDefault()
     renderForm()
     const cigarSubmit = document.querySelector("#new-cigar")    
     cigarSubmit.addEventListener("submit", (e) =>{
-        e.preventDefault
+        e.preventDefault()
         const formData = new FormData(e.target);
-        console.log(formData.values());
+        submitCigar(formData)
+        debugger
     })
 })
 
