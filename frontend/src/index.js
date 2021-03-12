@@ -35,7 +35,7 @@ const getStyles = () =>{
 
 const renderForm = function(){
     mainList.innerHTML = `
-    <form >
+    <form id="new-cigar">
         <div class="mb-3">            
             <input type="text" class="form-control" id="name" placeholder="Name">          
         </div>
@@ -55,7 +55,9 @@ const renderForm = function(){
     </form>
     `
     populateDropdown()
+    
 }
+
 
 const populateDropdown = function(){
     const styleDropdown = document.querySelector("#style-dropdown")
@@ -63,12 +65,13 @@ const populateDropdown = function(){
         styleDropdown.innerHTML += `<option>${style.name}</option>` 
     })    
 }
-// const populateDropdown = function(){
-//     for(let i = 0; i < Style.all_items.length; i++){
-//         let option = document.createElement('option')
-//         option.innerText = Style.all_items[i].name
-//         styleDropdown.appendChild(option)
-//     }   
+
+// const formSubmit = function(){
+//     const submit = document.querySelector("#cigar-submit")
+//     submit.preventDefault
+//     submit.addEventListener("submit", () =>{
+//         console.log("clicked")
+//     })
 // }
 
 for (let i = 0; i < cardItem.length; i++) {
@@ -104,6 +107,12 @@ allStyles.addEventListener("click",(e) =>{
 newCigar.addEventListener("click",(e) =>{
     e.preventDefault
     renderForm()
+    const cigarSubmit = document.querySelector("#new-cigar")    
+    cigarSubmit.addEventListener("submit", (e) =>{
+        e.preventDefault
+        const formData = new FormData(e.target);
+        console.log(formData.values());
+    })
 })
 
 
