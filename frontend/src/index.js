@@ -4,6 +4,7 @@ const allStyles = document.querySelector(".all-styles")
 const newCigar = document.querySelector(".new-cigar")
 const cardHeader = document.querySelector(".card-header")
 const cardItem = document.getElementsByClassName("nav-link")
+const styleDropdown = document.querySelector("#style-dropdown")
 
 document.addEventListener('DOMContentLoaded', (e) => {
     getCigars()
@@ -45,15 +46,30 @@ const renderForm = function(){
             <input type="text" class="form-control" id="price" placeholder="Price">            
         </div>
         <div class="mb-3">
-            <label for="style" class="form-label">Select Style</label>
-            <select id="style" class="form-select">
+            <label for="style-dropdown" class="form-label">Select Style</label>
+            <select id="style-dropdown" class="form-select">
                 
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     `
+    populateDropdown()
 }
+
+const populateDropdown = function(){
+    const styleDropdown = document.querySelector("#style-dropdown")
+    Style.all_items.forEach(style => {      
+        styleDropdown.innerHTML += `<option>${style.name}</option>` 
+    })    
+}
+// const populateDropdown = function(){
+//     for(let i = 0; i < Style.all_items.length; i++){
+//         let option = document.createElement('option')
+//         option.innerText = Style.all_items[i].name
+//         styleDropdown.appendChild(option)
+//     }   
+// }
 
 for (let i = 0; i < cardItem.length; i++) {
     cardItem[i].addEventListener("click", function() {
