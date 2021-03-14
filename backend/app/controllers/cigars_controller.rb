@@ -11,7 +11,6 @@ class CigarsController < ApplicationController
     end
 
     def create
-        binding.pry
         cigar = Cigar.new(cigar_params)
         render json: cigar
         
@@ -20,7 +19,7 @@ class CigarsController < ApplicationController
     private
 
     def cigar_params
-        params.require(:cigar).permit(:name, :description, :price)
+        params.require(:cigar).permit(:name, :description, :price, :style_id)
     end
 
 end

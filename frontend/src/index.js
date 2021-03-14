@@ -37,18 +37,18 @@ const renderForm = function(){
     mainList.innerHTML = `
     <form id="new-cigar">
         <div class="mb-3">            
-            <input type="text" class="form-control" id="name" placeholder="Name" name="cigar[name]">          
+            <input type="text" class="form-control" id="name" placeholder="Name" name="name">          
         </div>
         <div class="mb-3">            
-            <input type="text" class="form-control" id="description" placeholder="Description" name="cigar[description]">
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description">
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" id="price" placeholder="Price" name="cigar[price]">            
+            <input type="text" class="form-control" id="price" placeholder="Price" name="price">            
         </div>
         <div class="mb-3">
             <label for="style-dropdown" class="form-label">Select Style</label>
-            <select id="style-dropdown" class="form-select">
-                
+            <select id="style-dropdown" class="form-select" name="style">
+            <option value="">--Please choose an Style--</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -60,7 +60,7 @@ const renderForm = function(){
 const populateDropdown = function(){
     const styleDropdown = document.querySelector("#style-dropdown")
     Style.all_items.forEach(style => {      
-        styleDropdown.innerHTML += `<option>${style.name}</option>` 
+        styleDropdown.innerHTML += `<option value='${style.style_id}'>${style.name}</option>` 
     })    
 }
 
@@ -85,6 +85,7 @@ const renderAllItems = function(classObj){
 }
 
 const submitCigar = function(data){
+
     fetch(`http://localhost:3000/cigars`, {
         method: "POST",
         headers: {
@@ -96,8 +97,13 @@ const submitCigar = function(data){
     .then((res) => res.json())
     .then((cigar) => {        
         const newCigar = new Cigar(cigar)
-        console.log(newCigar)
+
+
         renderAllItems(Cigar)        
+    })
+    .catch(function(error) {
+        alert('something went wrong')
+        console.log(error.message)        
     })
 }
 
@@ -111,16 +117,32 @@ allStyles.addEventListener("click",(e) =>{
     renderAllItems(Style)    
 })
 
+// newCigar.addEventListener("click",(e) =>{
+//     e.preventDefault()
+//     renderForm()
+//     const cigarSubmit = document.querySelector("#new-cigar")    
+//     cigarSubmit.addEventListener("submit", (e) =>{
+//         e.preventDefault()
+//         const formData = new FormData(e.target);
+//         console.log(formData.values())    
+//         debugger
+//         submitCigar(formData)
+
+//     })
+// })
 newCigar.addEventListener("click",(e) =>{
     e.preventDefault()
     renderForm()
     const cigarSubmit = document.querySelector("#new-cigar")    
     cigarSubmit.addEventListener("submit", (e) =>{
         e.preventDefault()
-        const formData = new FormData(e.target);
+        const formData = {
+            name: e.target.name.value,
+            description: e.target.description.value,
+            price: e.target.price.value,
+            style_id: e.target.style.value
+        }
         submitCigar(formData)
-        debugger
     })
 })
-
 
