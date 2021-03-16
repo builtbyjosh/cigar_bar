@@ -55,12 +55,12 @@ const cigarStyleList = function() {
             const allCigarUl = document.querySelectorAll('.cigar-list')        
             li.innerHTML += cigarUL
             allCigarUl.forEach(li => li.innerHTML = "")
-            findCigars(li)
+            findStyleCigars(li)
         })
     })
 }
 
-const findCigars = function(obj){
+const findStyleCigars = function(obj){
     const list =  Cigar.all_items.filter ( i => i.style == obj.textContent)
     createList(list, obj)
 }
