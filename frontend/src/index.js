@@ -63,9 +63,12 @@ const renderCigarDetails = function(data, obj){
     console.log(`${data.description} - ${data.price}`)
     const cigarList = document.querySelector(".cigar-list")
     cigarList.innerHTML = `
-        <li> Style: ${data.style} Price: $${data.price}</li>
-        <li>    ${data.description}</li>
+        <li><strong>Style:</strong> ${data.style}, <strong>Price:</strong> $${data.price}</li>
+        <li>${data.description}</li>
+        <li>Delete Cigar <i class="fas fa-trash"></i></li>
+
     `
+    obj.appendChild(cigarList)
 }
 
 allCigars.addEventListener("click",(e) =>{
