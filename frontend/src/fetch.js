@@ -29,8 +29,10 @@ const submitCigar = function(data){
         body: JSON.stringify(data)
     })
     .then((res) => res.json())
-    .then((cigar) => {        
+    .then((cigar) => {  
+        debugger      
         const newCigar = new Cigar(cigar)
+        
         renderAllItems(Cigar)        
     })
     .catch(function(error) {

@@ -77,11 +77,12 @@ const renderCigarDetails = function(data, obj){
     const cigarDiv = document.querySelector(".cigar-div")
     const cigarUl = document.createElement('ul')
     const cigarLi = `
-        <li>-Style: ${data.style} </li>
+        <li>-Style: ${data.styleName()} </li>
         <li>-Price: $${data.price}</li>
         <li>-Description: ${data.description}</li>
         <button type="button" data-id=${data.id} class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
     `
+    // debugger
     cigarUl.innerHTML = cigarLi
     cigarDiv.appendChild(cigarUl)    
     obj.appendChild(cigarDiv)
@@ -178,7 +179,7 @@ newCigar.addEventListener("click",(e) =>{
             name: e.target.name.value,
             description: e.target.description.value,
             price: e.target.price.value,
-            id: e.target.style.value
+            style_id: e.target.style.value
         }
         submitCigar(formData)
     })
