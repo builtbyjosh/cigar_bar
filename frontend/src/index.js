@@ -39,9 +39,19 @@ const renderAllItems = function(classObj){
 
 
 // All Cigar Tab
+const cigarDetails = function(){
+    const singleCigar = document.querySelectorAll(".list-group-item")
+    singleCigar.forEach(li =>{
+        li.addEventListener('click', function(){
+            console.log(`clicked ${li.name}`)
+        })
+        
+    })
+}
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault()
     renderAllItems(Cigar)
+    cigarDetails()
 })
 
 
