@@ -1,5 +1,5 @@
 class CigarSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :description, :price, :style
+  attributes :id, :name, :description, :price, :style
   
 end
