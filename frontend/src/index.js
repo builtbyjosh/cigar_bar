@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     getCigars()
     getStyles()
     renderAllItems(Cigar)
+    cigarDetails()
 })
 
 // navbar logic
@@ -40,14 +41,14 @@ const renderAllItems = function(classObj){
 
 // All Cigar Tab
 const cigarDetails = function(){
-    const singleCigar = document.querySelectorAll(".list-group-item")
-    singleCigar.forEach(li =>{
+    const cigarLi = document.querySelectorAll(".list-group-item")
+    cigarLi.forEach(li =>{
         li.addEventListener('click', function(){
-            console.log(`clicked ${li.name}`)
-        })
-        
+            console.log(`clicked ${li.textContent}`)
+        })        
     })
 }
+
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault()
     renderAllItems(Cigar)
