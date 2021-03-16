@@ -125,7 +125,7 @@ allStyles.addEventListener("click",(e) =>{
     e.preventDefault()
     renderAllItems(Style)
     cigarStyleList()
-  
+    listInstructionsText("Click Style To View Cigars")
 })
 
 
@@ -176,6 +176,7 @@ newCigar.addEventListener("click",(e) =>{
         }
         submitCigar(formData)
     })
+    listInstructionsText("")
 })
 
 
