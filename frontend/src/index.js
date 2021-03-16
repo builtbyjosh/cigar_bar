@@ -52,10 +52,11 @@ const cigarDetails = function(){
     cigarLi.forEach(li =>{
         li.addEventListener('click', function(){
             console.log("How Many Clicks Does It Take?")
-            const cigarUL = "<ul class='cigar-details'></ul>"
-            const allCigarUl = document.querySelectorAll('.cigar-details')        
-            li.innerHTML += cigarUL
-            allCigarUl.forEach(li => li.innerHTML = "")            
+            const cigarDIV = document.createElement('div')
+            cigarDIV.classList.add('cigar-div')
+            const allCigarDivs = document.querySelectorAll('.cigar-div')        
+            li.appendChild(cigarDIV)
+            allCigarDivs.forEach(li => li.innerHTML = "")            
             findCigar(li)
         })        
     })
@@ -67,14 +68,18 @@ const findCigar = function(obj){
 }
 
 const renderCigarDetails = function(data, obj){
-    const cigarDetails = document.querySelector(".cigar-details")
-    cigarDetails.innerHTML = `
+    const cigarDiv = document.querySelector(".cigar-div")
+    const cigarUl = document.createElement('ul')
+    const cigarLi = `
         <li>-Style: ${data.style} </li>
         <li>-Price: $${data.price}</li>
         <li>-Description: ${data.description}</li>
         <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
     `
-    obj.appendChild(cigarDetails)
+    cigarUl.innerHTML = cigarLi
+    cigarDiv.appendChild(cigarUl)
+    
+    obj.appendChild(cigarDiv)
 
 }
 
