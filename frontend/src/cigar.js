@@ -7,12 +7,14 @@ class Cigar {
         this.name = data.name
         this.description = data.description
         this.price = data.price
+        this.styleName = data.style.name
         this.style_id = data.style_id
+    
         Cigar.all_items.push(this)
     }
 
-    styleName(){
-        const styleName = Style.all_items.find( obj => obj.id == this.id)
-        return styleName.name
+    renderSingleItem(){
+        return `<li class="list-group-item" value='${this.id}'>${this.name}</li>`
     }
+
 }
