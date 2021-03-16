@@ -51,8 +51,8 @@ const cigarDetails = function(){
 }
 
 const findCigar = function(obj){
-    const cigar = Cigar.all_items.find(obj.textContent)
-    console.log(cigar)
+    const singleCigar = Cigar.all_items.find( function(s) { return s.name === obj.innerText })
+    console.log(`${singleCigar.description} - ${singleCigar.price}`)    
 }
 
 allCigars.addEventListener("click",(e) =>{
