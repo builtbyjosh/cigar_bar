@@ -48,7 +48,8 @@ const deleteCigar = function(){
     btn.addEventListener('click', function(e){
         console.log(e.target.dataset)
         console.log(e.target)
-        // e.target.parentElement.parentElement.parentElement.remove();
+        const parentEl = e.target.parentElement.parentElement.parentElement.parentElement
+        console.log(parentEl.calue)
     })
     
 
