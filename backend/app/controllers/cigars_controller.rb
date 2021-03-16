@@ -12,8 +12,14 @@ class CigarsController < ApplicationController
 
     def create
         cigar = Cigar.new(cigar_params)
-        render json: cigar
-        
+        render json: cigar        
+    end
+
+    def destroy
+        cigar = Cigar.find(params[:id])
+        if cigar.destroy
+            render json: {id: cigar.id }
+        end
     end
 
     private
