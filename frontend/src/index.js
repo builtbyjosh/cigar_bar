@@ -34,7 +34,7 @@ for (let i = 0; i < cardItem.length; i++) {
 
 // render cigars and styles
 function renderSingleItem(item){
-    return `<li class="list-group-item">${item.name}</ul></li>`
+    return `<li class="list-group-item" value='${item.id}'>${item.name}</li>`
 }
   
 const renderAllItems = function(classObj){
@@ -158,7 +158,7 @@ const renderForm = function(){
 const populateDropdown = function(){
     const styleDropdown = document.querySelector("#style-dropdown")
     Style.all_items.forEach(style => {      
-        styleDropdown.innerHTML += `<option value='${style.style_id}'>${style.name}</option>` 
+        styleDropdown.innerHTML += `<option value='${style.id}'>${style.name}</option>` 
     })    
 }
 
@@ -172,7 +172,7 @@ newCigar.addEventListener("click",(e) =>{
             name: e.target.name.value,
             description: e.target.description.value,
             price: e.target.price.value,
-            style_id: e.target.style.value
+            id: e.target.style.value
         }
         submitCigar(formData)
     })
