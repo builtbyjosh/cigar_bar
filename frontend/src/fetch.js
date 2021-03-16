@@ -3,8 +3,7 @@ const getCigars = () => {
     .then(res => res.json())
     .then((cigarData) => {
         cigarData.data.forEach(cigarObj => {
-            const newCigar = new Cigar(cigarObj.attributes)
-            
+            const newCigar = new Cigar(cigarObj.attributes)            
         })
     })
 }
@@ -29,10 +28,8 @@ const submitCigar = function(data){
         body: JSON.stringify(data)
     })
     .then((res) => res.json())
-    .then((cigar) => {  
-        debugger      
-        const newCigar = new Cigar(cigar)
-        
+    .then((cigar) => {
+        const newCigar = new Cigar(cigar)        
         renderAllItems(Cigar)        
     })
     .catch(function(error) {
@@ -41,8 +38,7 @@ const submitCigar = function(data){
     })
 }
 
-const deleteCigar = function(){    
-    
+const deleteCigar = function(){ 
     const btn = document.querySelector('.btn-danger')
     btn.addEventListener('click', function(e){
         const parentEl = e.target.parentElement.parentElement.parentElement.parentElement
@@ -55,6 +51,4 @@ const deleteCigar = function(){
             parentEl.remove()
         })
     })
-    
-
 }
