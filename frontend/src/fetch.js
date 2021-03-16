@@ -41,3 +41,15 @@ const submitCigar = function(data){
         console.log(error.message)        
     })
 }
+
+const deleteCigar = function(){    
+    
+    const btn = document.querySelector('.btn-danger')
+    btn.addEventListener('click', function(e){
+        console.log(e.target.dataset)
+        console.log(e.target)
+        // e.target.parentElement.parentElement.parentElement.remove();
+    })
+    
+
+}
