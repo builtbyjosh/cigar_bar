@@ -39,19 +39,13 @@ for (let i = 0; i < cardItem.length; i++) {
     });
 }
 
-// render cigars and styles
-function renderSingleItem(item){
-    return `<li class="list-group-item" value='${item.id}'>${item.name}</li>`
-}
-  
+// render main-list
 const renderAllItems = function(classObj){
     mainList.innerHTML = ""
     classObj.all_items.forEach(classItem => {
-        mainList.innerHTML += renderSingleItem(classItem)
+        mainList.innerHTML += classItem.renderSingleItem()
     });
 }
-
-
 
 // All Cigar Tab
 const cigarDetails = function(){
@@ -63,26 +57,25 @@ const cigarDetails = function(){
             const allCigarDivs = document.querySelectorAll('.cigar-div')
             allCigarDivs.forEach(div => div.remove())
             li.appendChild(cigarDIV)            
-            findCigar(li)
+            // findCigar(li)
+            renderCigarDetails(findCigar(li),li)
         })        
     })
 }
 
 const findCigar = function(obj){
-    const singleCigar = Cigar.all_items.find( function(s) { return s.name === obj.innerText })
-    renderCigarDetails(singleCigar, obj)        
+    return Cigar.all_items.find( function(s) { return s.name === obj.innerText })       
 }
 
 const renderCigarDetails = function(data, obj){
     const cigarDiv = document.querySelector(".cigar-div")
     const cigarUl = document.createElement('ul')
     const cigarLi = `
-        <li>-Style: ${data.styleName()} </li>
+        <li>-Style: ${data.styleName} </li>
         <li>-Price: $${data.price}</li>
         <li>-Description: ${data.description}</li>
         <button type="button" data-id=${data.id} class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
     `
-    // debugger
     cigarUl.innerHTML = cigarLi
     cigarDiv.appendChild(cigarUl)    
     obj.appendChild(cigarDiv)
@@ -113,7 +106,7 @@ const cigarStyleList = function() {
 }
 
 const findStyleCigars = function(obj){
-    const list =  Cigar.all_items.filter ( i => i.style == obj.textContent)
+    const list =  Cigar.all_items.filter ( i => i.styleName == obj.textContent)
     renderStyleList(list, obj)
 }
 
