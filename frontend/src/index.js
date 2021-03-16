@@ -45,8 +45,14 @@ const cigarDetails = function(){
     cigarLi.forEach(li =>{
         li.addEventListener('click', function(){
             console.log(`clicked ${li.textContent}`)
+            findCigar(li)
         })        
     })
+}
+
+const findCigar = function(obj){
+    const cigar = Cigar.all_items.find(obj.textContent)
+    console.log(cigar)
 }
 
 allCigars.addEventListener("click",(e) =>{
