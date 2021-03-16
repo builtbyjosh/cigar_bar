@@ -2,7 +2,7 @@ const mainList = document.querySelector(".main-list")
 const allCigars = document.querySelector(".all-cigars")
 const allStyles = document.querySelector(".all-styles")
 const newCigar = document.querySelector(".new-cigar")
-const cardHeader = document.querySelector(".card-header")
+
 const cardItem = document.getElementsByClassName("nav-link")
 const styleDropdown = document.querySelector("#style-dropdown")
 
@@ -12,7 +12,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
     getStyles()
     renderAllItems(Cigar)
     cigarDetails()
+    listInstructionsText("Click Cigar For Details")
 })
+
+const listInstructionsText = function(str){
+    const listInstructions = document.querySelector(".instructions")
+    listInstructions.innerText = str
+}
 
 // navbar logic
 for (let i = 0; i < cardItem.length; i++) {
@@ -22,6 +28,7 @@ for (let i = 0; i < cardItem.length; i++) {
         current[0].className = current[0].className.replace(" active", "")
       }
       this.className += " active"
+
     });
 }
 
@@ -61,17 +68,24 @@ const findCigar = function(obj){
 
 const renderCigarDetails = function(data, obj){
     const cigarList = document.querySelector(".cigar-list")
+    // for (const [key, value] of Object.entries(data)) {
+    //     const cigarItem = document.createElement('li')
+    //     cigarItem.innerText = `-${key}: ${value}`
+    //     cigarList.appendChild(cigarItem)
+    //   }
     cigarList.innerHTML = `
-        <li>-<strong>Style:</strong> ${data.style} </li>
-        <li>-<strong>Price:</strong> $${data.price}</li>
-        <li>-<strong>Description:</strong>${data.description}</li>
-        <button<i class="far fa-trash-alt"></i></button>
+        <li>-<em>Style:</em> ${data.style} </li>
+        <li>-<em>Price:</em> $${data.price}</li>
+        <li>-<em>Description:</em> ${data.description}</li>
+        <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
     `
     obj.appendChild(cigarList)
+    debugger
 }
 
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault()
+    listInstructionsText("Click Cigar For Details")
     renderAllItems(Cigar)
     cigarDetails()
 })
