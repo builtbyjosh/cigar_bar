@@ -61,7 +61,11 @@ const findCigar = function(obj){
 const renderCigarDetails = function(data, obj){
     console.log(`Cigar name is ${obj.innerText}`)
     console.log(`${data.description} - ${data.price}`)
-    
+    const cigarList = document.querySelector(".cigar-list")
+    cigarList.innerHTML = `
+        <li> Style: ${data.style} Price: $${data.price}</li>
+        <li>    ${data.description}</li>
+    `
 }
 
 allCigars.addEventListener("click",(e) =>{
