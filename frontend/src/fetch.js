@@ -46,10 +46,15 @@ const deleteCigar = function(){
     
     const btn = document.querySelector('.btn-danger')
     btn.addEventListener('click', function(e){
-        console.log(e.target.dataset)
-        console.log(e.target)
         const parentEl = e.target.parentElement.parentElement.parentElement.parentElement
-        console.log(parentEl.calue)
+        console.log(parentEl.value)
+        fetch(`http://localhost:3000/cigars/${parentEl.value}`, {
+            method: 'DELETE',
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            parentEl.remove()
+        })
     })
     
 
