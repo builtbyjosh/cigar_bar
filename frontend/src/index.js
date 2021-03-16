@@ -10,10 +10,17 @@ const styleDropdown = document.querySelector("#style-dropdown")
 document.addEventListener('DOMContentLoaded', (e) => {
     getCigars()
     getStyles()
-    renderAllItems(Cigar)
-    cigarDetails()
-    listInstructionsText("Click Cigar For Details")
+    renderWelcome()
+
 })
+
+const renderWelcome = function(){
+    mainList.innerHTML = `
+        <li class="list-group-item">Welcome to Cigar Bar</li>
+        <li class="list-group-item">You must be 18 or older to use this app</li>
+        <li class="list-group-item">Click A Menu Option to Begin</li>
+    `
+}
 
 const listInstructionsText = function(str){
     const listInstructions = document.querySelector(".instructions")
@@ -85,8 +92,7 @@ allCigars.addEventListener("click",(e) =>{
     e.preventDefault()
     listInstructionsText("Click Cigar For Details")
     renderAllItems(Cigar)
-    cigarDetails()
-    
+    cigarDetails()    
 })
 
 
