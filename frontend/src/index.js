@@ -50,13 +50,12 @@ const renderAllItems = function(classObj){
 const cigarDetails = function(){
     const cigarLi = document.querySelectorAll(".list-group-item")
     cigarLi.forEach(li =>{
-        li.addEventListener('click', function(){
-            console.log("How Many Clicks Does It Take?")
+        li.addEventListener('click', function(){            
             const cigarDIV = document.createElement('div')
             cigarDIV.classList.add('cigar-div')
-            const allCigarDivs = document.querySelectorAll('.cigar-div')        
-            li.appendChild(cigarDIV)
-            allCigarDivs.forEach(li => li.innerHTML = "")            
+            const allCigarDivs = document.querySelectorAll('.cigar-div')
+            allCigarDivs.forEach(div => div.remove())
+            li.appendChild(cigarDIV)            
             findCigar(li)
         })        
     })
@@ -74,16 +73,12 @@ const renderCigarDetails = function(data, obj){
         <li>-Style: ${data.style} </li>
         <li>-Price: $${data.price}</li>
         <li>-Description: ${data.description}</li>
-        <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+        <button type="button" data-id=${data.id} class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
     `
     cigarUl.innerHTML = cigarLi
     cigarDiv.appendChild(cigarUl)    
     obj.appendChild(cigarDiv)
-}
-
-const deleteCigar = function(){
-    btn = document.querySelector('.btn-danger')
-    console.log("btn clicked")
+    deleteCigar()
 }
 
 allCigars.addEventListener("click",(e) =>{
@@ -91,7 +86,7 @@ allCigars.addEventListener("click",(e) =>{
     listInstructionsText("Click Cigar For Details")
     renderAllItems(Cigar)
     cigarDetails()
-    deleteCigar()
+    
 })
 
 
