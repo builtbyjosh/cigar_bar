@@ -132,6 +132,7 @@ allStyles.addEventListener("click",(e) =>{
 
 // form creation
 const renderForm = function(){
+    
     mainList.innerHTML = `
     <form id="new-cigar">
         <div class="mb-3">            
