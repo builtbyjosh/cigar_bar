@@ -12,3 +12,7 @@ body {
 .card {
     border: none;
 }
+
+.cigar-list{
+    list-style-type: none;
+}
