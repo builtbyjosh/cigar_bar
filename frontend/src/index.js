@@ -77,10 +77,13 @@ const renderCigarDetails = function(data, obj){
         <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
     `
     cigarUl.innerHTML = cigarLi
-    cigarDiv.appendChild(cigarUl)
-    
+    cigarDiv.appendChild(cigarUl)    
     obj.appendChild(cigarDiv)
+}
 
+const deleteCigar = function(){
+    btn = document.querySelector('.btn-danger')
+    console.log("btn clicked")
 }
 
 allCigars.addEventListener("click",(e) =>{
@@ -88,6 +91,7 @@ allCigars.addEventListener("click",(e) =>{
     listInstructionsText("Click Cigar For Details")
     renderAllItems(Cigar)
     cigarDetails()
+    deleteCigar()
 })
 
 
