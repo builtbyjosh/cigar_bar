@@ -4,7 +4,7 @@ const getCigars = () => {
     .then((cigarData) => {
         cigarData.data.forEach(cigarObj => {
             const newCigar = new Cigar(cigarObj.attributes)
-            renderAllItems(Cigar)
+            
         })
     })
 }
@@ -20,7 +20,6 @@ const getStyles = () =>{
 }
 
 const submitCigar = function(data){
-
     fetch(`http://localhost:3000/cigars`, {
         method: "POST",
         headers: {
@@ -32,8 +31,6 @@ const submitCigar = function(data){
     .then((res) => res.json())
     .then((cigar) => {        
         const newCigar = new Cigar(cigar)
-
-
         renderAllItems(Cigar)        
     })
     .catch(function(error) {
