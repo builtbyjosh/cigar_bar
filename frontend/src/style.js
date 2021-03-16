@@ -3,7 +3,7 @@ class Style {
 
     constructor(data){
         this.name = data.name
-        this.style_id = data.id
+        this.id = data.id
         Style.all_items.push(this)
     }
 }
