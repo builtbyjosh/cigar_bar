@@ -43,8 +43,7 @@ const renderAllItems = function(classObj){
 const cigarDetails = function(){
     const cigarLi = document.querySelectorAll(".list-group-item")
     cigarLi.forEach(li =>{
-        li.addEventListener('click', function(){
-            console.log(`clicked ${li.textContent}`)
+        li.addEventListener('click', function(){            
             findCigar(li)
         })        
     })
@@ -52,10 +51,13 @@ const cigarDetails = function(){
 
 const findCigar = function(obj){
     const singleCigar = Cigar.all_items.find( function(s) { return s.name === obj.innerText })
-    console.log(`${singleCigar.description} - ${singleCigar.price}`)    
+    renderCigarDetails(singleCigar, obj)        
 }
 
-
+const renderCigarDetails = function(data, obj){
+    console.log(`Cigar name is ${obj.innerText}`)
+    console.log(`${data.description} - ${data.price}`)
+}
 
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault()
