@@ -55,6 +55,8 @@ const findCigar = function(obj){
     console.log(`${singleCigar.description} - ${singleCigar.price}`)    
 }
 
+
+
 allCigars.addEventListener("click",(e) =>{
     e.preventDefault()
     renderAllItems(Cigar)
@@ -79,10 +81,10 @@ const cigarStyleList = function() {
 
 const findStyleCigars = function(obj){
     const list =  Cigar.all_items.filter ( i => i.style == obj.textContent)
-    createList(list, obj)
+    renderStyleList(list, obj)
 }
 
-const createList = function(data, obj){
+const renderStyleList = function(data, obj){
     data.forEach(cigar =>{
         const cigarList = document.querySelector(".cigar-list")        
         const cigarItem = document.createElement('li')
