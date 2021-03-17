@@ -13,7 +13,6 @@ class CigarsController < ApplicationController
     def create
         cigar = Cigar.new(cigar_params)
         cigar.save
-        # binding.pry
         render json: cigar        
     end
 

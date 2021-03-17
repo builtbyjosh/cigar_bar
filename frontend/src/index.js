@@ -8,8 +8,9 @@ const styleDropdown = document.querySelector("#style-dropdown")
 
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    getCigars()
     getStyles()
+    getCigars()
+    
     renderWelcome()
 
 })
@@ -168,11 +169,13 @@ newCigar.addEventListener("click",(e) =>{
     const cigarSubmit = document.querySelector("#new-cigar")    
     cigarSubmit.addEventListener("submit", (e) =>{
         e.preventDefault()
+
         const formData = {
             name: e.target.name.value,
             description: e.target.description.value,
             price: e.target.price.value,
-            style_id: e.target.style.value
+            style_id: e.target.style.value,
+            styleName: Style.all_items[e.target.style.value - 1].name
         }
         submitCigar(formData)
     })
