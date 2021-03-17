@@ -7,10 +7,13 @@ class Cigar {
         this.name = data.name
         this.description = data.description
         this.price = data.price
-        this.style_id = data.style_id
-        this.styleName = Style.all_items[this.style_id].name
+        this.style_id = data.style.id        
     
         Cigar.all_items.push(this)
+    }
+
+    styleName(){
+        return Style.all_items[this.style_id - 1].name
     }
 
     renderSingleItem(){

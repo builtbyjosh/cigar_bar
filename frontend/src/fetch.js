@@ -29,7 +29,7 @@ const submitCigar = function(data){
     })
     .then((res) => res.json())
     .then((cigar) => {
-        debugger
+
         const newCigar = new Cigar(cigar)        
         renderAllItems(Cigar)        
     })
