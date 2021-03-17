@@ -19,7 +19,6 @@ const getStyles = () =>{
 }
 
 const submitCigar = function(data){
-
     fetch(`http://localhost:3000/cigars`, {
         method: "POST",
         headers: {
@@ -30,9 +29,9 @@ const submitCigar = function(data){
     })
     .then((res) => res.json())
     .then((cigar) => {
-
-        const newCigar = new Cigar(cigar)        
-        renderAllItems(Cigar)        
+        const newCigar = new Cigar(cigar)
+        renderAllItems(Cigar)
+        document.querySelector('.all-cigars').click()        
     })
     .catch(function(error) {
         alert('something went wrong')

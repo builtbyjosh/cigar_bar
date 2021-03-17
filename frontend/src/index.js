@@ -7,12 +7,10 @@ const cardItem = document.getElementsByClassName("nav-link")
 const styleDropdown = document.querySelector("#style-dropdown")
 
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    
+document.addEventListener('DOMContentLoaded', (e) => {    
     getCigars()
     getStyles()
     renderWelcome()
-
 })
 
 const renderWelcome = function(){

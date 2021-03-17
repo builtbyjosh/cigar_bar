@@ -7,7 +7,7 @@ class Cigar {
         this.name = data.name
         this.description = data.description
         this.price = data.price
-        this.style_id = data.style.id        
+        this.style_id = data.style_id        
     
         Cigar.all_items.push(this)
     }
