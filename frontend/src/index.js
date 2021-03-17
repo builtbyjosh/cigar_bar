@@ -108,7 +108,7 @@ const cigarStyleList = function() {
 }
 
 const findStyleCigars = function(obj){
-    const list =  Cigar.all_items.filter ( i => i.styleName == obj.textContent)
+    const list =  Cigar.all_items.filter ( i => i.styleName() == obj.textContent)
     renderStyleList(list, obj)
 }
 
@@ -170,13 +170,13 @@ newCigar.addEventListener("click",(e) =>{
     const cigarSubmit = document.querySelector("#new-cigar")    
     cigarSubmit.addEventListener("submit", (e) =>{
         e.preventDefault()
-
+        // debugger
         const formData = {
             name: e.target.name.value,
             description: e.target.description.value,
             price: e.target.price.value,
             style_id: e.target.style.value,
-            styleName: Style.all_items[e.target.style.value - 1].name
+            
         }
         submitCigar(formData)
     })

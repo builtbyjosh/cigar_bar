@@ -19,6 +19,7 @@ const getStyles = () =>{
 }
 
 const submitCigar = function(data){
+
     fetch(`http://localhost:3000/cigars`, {
         method: "POST",
         headers: {
