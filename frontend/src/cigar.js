@@ -17,9 +17,4 @@ class Cigar {
         return `<li class="list-group-item" value='${this.id}'>${this.name}</li>`
     }
 
-    findAndDelete(objId){
-        // Cigar.all_items[objId.id]
-        Cigar.all_items = Cigar.all_items.filter(cigar => cigar.id !== objId)
-    }
-
 }

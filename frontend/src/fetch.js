@@ -47,7 +47,7 @@ const deleteCigar = function(){
         })
         .then((res) => res.json())
         .then((data) => {
-            debugger
+            Cigar.all_items = Cigar.all_items.filter(cigar => cigar.id !== data.id)
             parentEl.remove()
         })
     })
